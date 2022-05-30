@@ -42,6 +42,8 @@ def encounter(eHP):
         hInput = ""
         print(f"The enemy has {eHP} hp.")
 
+        #call the method for an enemy attack
+
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
 time.sleep(3)
@@ -102,3 +104,6 @@ print(f"You have encountered a rabbit! They have 20 hp. What do you want to do?"
 encounter(20)
 
 # Once complete, your village is attacked by monsters
+
+def enemyAttack():
+    
