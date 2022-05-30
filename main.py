@@ -46,8 +46,12 @@ def encounter(eHP):
         hInput = ""
         print(f"The enemy has {eHP} hp.")
 
-        player.takeDamage(enemyAttack(eHP))
-
+        time.sleep(3)
+        enemyDamage = enemyAttack(eHP)
+        player.takeDamage(enemyDamage)
+        print(f"The enemy does {enemyDamage} damage!")
+        
+        time.sleep(2)
         heroHP = player.getHP()
         print(f"You have {heroHP} hp")
     
