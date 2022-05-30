@@ -19,14 +19,7 @@ def useItem():
     else:
         item = input(f"Pick an item {bag} ").lower().strip()
         print(f"You used {item}")
-        if item == "apple":
-            player.heal(5)
-            bag.remove(item)
-    return player.getHP
-
-def enemyAttack(eHP):
-    damage = r.randint(0,int(eHP/5))
-    return damage
+        bag.remove(item)
 
 def encounter(eHP):
     hInput = ''
@@ -48,22 +41,6 @@ def encounter(eHP):
             useItem()
         hInput = ""
         print(f"The enemy has {eHP} hp.")
-
-        #call the method for an enemy attack
-        damage = enemyAttack(eHP)
-        player.takeDamage(damage)
-        heroHP = player.getHP()
-
-        if heroHP < 6:
-            print("You have low HP! Use an item or run")
-
-        if heroHP <= 0:
-            print("You have lost! Try again!")
-            player.resetDamage(25)
-            bag = []
-            break
-
-        print(f"You have {heroHP} hp left")
 
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
@@ -113,6 +90,9 @@ while enemyHP > 0:
     heroInput = ""
     print(f"The enemy has {enemyHP} hp.")
 
+print("After defeating the rabbit, you find a rusty sword in the forest")
+time.sleep(1)
+
 print("Congrats! Enemy defeated. You have received a rusty blade (plus one to damage), 5 apples, a stick (to yeet at enemy)")
 player.setBoost(1)
 bag.append("stick")
@@ -133,3 +113,10 @@ print(f"You have encountered a goblin! They have 20 hp. What do you want to do?"
 encounter(20)
 
 print("Congrats! Enemy defeated.")
+time.sleep(1)
+print("The rest of goblins have left already, thankfully.")
+time.sleep(1)
+print("You decide to get revenge on the goblins and get ready.")
+time.sleep(1)
+print(f"{player.getName()}, it sounds like a good idea to head for a village.")
+time.sleep(1)
