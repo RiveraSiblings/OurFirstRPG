@@ -23,6 +23,9 @@ def useItem():
     else:
         item = input(f"Pick an item {bag} ").lower().strip()
         print(f"You used {item}")
+        if item == "apple":
+            player.heal(5)
+            print("You've healed 5 hp!")
         bag.remove(item)
 
 def encounter(eHP):
@@ -50,7 +53,7 @@ def encounter(eHP):
         enemyDamage = enemyAttack(eHP)
         player.takeDamage(enemyDamage)
         print(f"The enemy does {enemyDamage} damage!")
-        
+
         time.sleep(2)
         heroHP = player.getHP()
         print(f"You have {heroHP} hp")
