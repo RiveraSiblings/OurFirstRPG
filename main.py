@@ -25,7 +25,7 @@ def useItem():
     return player.getHP
 
 def enemyAttack(eHP):
-    damage = r.randint(0,eHP/5)
+    damage = r.randint(0,int(eHP/5))
     return damage
 
 def encounter(eHP):
@@ -62,6 +62,8 @@ def encounter(eHP):
             player.resetDamage(25)
             bag = []
             break
+
+        print(f"You have {heroHP} hp left")
 
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
