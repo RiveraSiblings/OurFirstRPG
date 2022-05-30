@@ -100,9 +100,12 @@ player.attackTypes[0] = "rusty blade"
 
 # Once complete, your village is attacked by monsters
 
-print("You return to your house to find your house in ruins and blood soaking out from under the door.")
+print("You return to your house to find your house in ruins!")
 print("A goblin cuaght you from the behind by suprise!")
 
+time.sleep(3)
+
+print_ascii_art("goblin.txt")
 print(f"You have encountered a goblin! They have 20 hp. What do you want to do?")
 encounter(20)
 
