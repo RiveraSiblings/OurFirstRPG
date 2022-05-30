@@ -13,6 +13,7 @@ class Hero:
         self.sneakDamage = sneakDamage
         self.boost = boost
         self.attackTypes = ["stick", "spell", "sneak"]
+        self.coin = 100
 
     #getters for each field
     def getName(self):
@@ -98,3 +99,16 @@ class Hero:
 
     def run(self):
         return r.randint(1,3) == 3
+
+    def getCoin(self):
+        return self.coin
+
+    def earnCoin(self, x):
+        self.coin + x
+
+    def buyItem(self, price, item):
+        self.bag.add(item)
+        self.coin - price
+    
+    def buyEquipment(self, price):
+        self.coin - price
