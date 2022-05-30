@@ -5,6 +5,7 @@ class Hero:
     def __init__(self, name, chClass, spellSlots,  sneakAttacks, damage, spellDamage, sneakDamage, boost):
         self.name = name
         self.chClass = chClass
+        self.hp = 25
         self.spellSlots = spellSlots
         self.sneakAttacks = sneakAttacks
         self.damage  = damage
@@ -19,6 +20,9 @@ class Hero:
 
     def getchClass(self):
         return self.chClass
+
+    def getHP(self):
+        return self.hp
 
     def getSpellSlots(self):
         return self.spellSlots
@@ -66,6 +70,15 @@ class Hero:
     def setBoost(self, s):
         self.boost = s
 
+    def takeDamage(self, damage):
+        self.hp = self.hp - damage
+
+    def resetDamage(self, resetValue):
+        self.hp = resetValue
+
+    def heal(self, heal):
+        self.hp = self.hp + heal
+
     def attack(self):
         attackInput = input(f"Choose type of attack: {self.attackTypes} ")
         enemyDamaged = 0
@@ -80,5 +93,5 @@ class Hero:
             print(f"You used {self.attackTypes[2]}. It does {enemyDamaged} damage.")
         return enemyDamaged
 
-    def run():
+    def run(self):
         return r.randint(1,3) == 3

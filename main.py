@@ -10,7 +10,7 @@ bag = []
 player = Hero("Gen", "Player", 3, 3, 3, 5, 6, 0)
 
 def print_ascii_art(fn):
-    f = open(fn, 
+    f = open(fn, 'r')
     print( ''.join([line for line in f]))
 
 def useItem():
@@ -23,10 +23,11 @@ def useItem():
 
 def encounter(eHP):
     hInput = ''
-    while eHP > 0:
+    heroHP = player.getHP()
+    while eHP > 0 and heroHP > 0:
         while (hInput in moves) == False:
             hInput = input(f"Choose an action: {moves} ")
-        print(f"You have chosen to {heroInput}")
+        print(f"You have chosen to {hInput}")
         if hInput == "attack":
             enemyDamaged = player.attack()
             eHP = eHP - enemyDamaged
@@ -95,7 +96,7 @@ bag.append("stick")
 for x in range(5):
     bag.append("apple")
 print(bag)
-attackTypes[0] = "rusty blade"
+player.attackTypes[0] = "rusty blade"
 
 print(f"You have encountered a rabbit! They have 20 hp. What do you want to do?")
 encounter(20)
