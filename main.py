@@ -19,7 +19,14 @@ def useItem():
     else:
         item = input(f"Pick an item {bag} ").lower().strip()
         print(f"You used {item}")
-        bag.remove(item)
+        if item == "apple":
+            player.heal(5)
+            bag.remove(item)
+    return player.getHP
+
+def enemyAttack(eHP):
+    damage = r.randint(0,eHP/5)
+    return damage
 
 def encounter(eHP):
     hInput = ''
@@ -43,6 +50,18 @@ def encounter(eHP):
         print(f"The enemy has {eHP} hp.")
 
         #call the method for an enemy attack
+        damage = enemyAttack(eHP)
+        player.takeDamage(damage)
+        heroHP = player.getHP()
+
+        if heroHP < 6:
+            print("You have low HP! Use an item or run")
+
+        if heroHP <= 0:
+            print("You have lost! Try again!")
+            player.resetDamage(25)
+            bag = []
+            break
 
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
@@ -104,6 +123,3 @@ print(f"You have encountered a rabbit! They have 20 hp. What do you want to do?"
 encounter(20)
 
 # Once complete, your village is attacked by monsters
-
-def enemyAttack():
-    

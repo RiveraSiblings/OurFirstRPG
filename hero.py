@@ -83,7 +83,7 @@ class Hero:
         attackInput = input(f"Choose type of attack: {self.attackTypes} ")
         enemyDamaged = 0
         if attackInput == self.attackTypes[0]:
-            enemyDamaged = r.randint(0, self.damage) + self.boost
+            enemyDamaged = r.randint(1, self.damage) + self.boost
             print(f"You used {self.attackTypes[0]}. It does {enemyDamaged} damage.")
         elif attackInput == self.attackTypes[1]:
             enemyDamaged = r.randint(0, self.spellDamage)
