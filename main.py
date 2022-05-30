@@ -9,6 +9,10 @@ bag = []
 
 player = Hero("Gen", "Player", 3, 3, 3, 5, 6, 0)
 
+def enemyAttack(eHP):
+    damage = r.randint(0, int(eHP/5))
+    return damage
+
 def print_ascii_art(fn):
     f = open(fn, 'r')
     print( ''.join([line for line in f]))
@@ -41,6 +45,14 @@ def encounter(eHP):
             useItem()
         hInput = ""
         print(f"The enemy has {eHP} hp.")
+
+        player.takeDamage(enemyAttack(eHP))
+
+        heroHP = player.getHP()
+        print(f"You have {heroHP} hp")
+    
+    if heroHP < 0:
+        print("You have fainted")
 
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
