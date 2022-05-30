@@ -77,9 +77,6 @@ class Hero:
     def takeDamage(self, damage):
         self.hp = self.hp - damage
 
-    def resetDamage(self, resetValue):
-        self.hp = resetValue
-
     def heal(self, heal):
         self.hp = self.hp + heal
 
