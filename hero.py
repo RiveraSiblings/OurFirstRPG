@@ -70,6 +70,9 @@ class Hero:
     def setBoost(self, s):
         self.boost = s
 
+    def setHP(self, s):
+        self.hp = s
+
     def takeDamage(self, damage):
         self.hp = self.hp - damage
 

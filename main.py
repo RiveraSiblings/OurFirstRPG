@@ -11,7 +11,7 @@ player = Hero("Gen", "Player", 3, 3, 3, 5, 6, 0)
 
 def enemyAttack(eHP):
     damage = r.randint(0, int(eHP/5))
-    return damage
+    return damage 
 
 def print_ascii_art(fn):
     f = open(fn, 'r')
@@ -25,7 +25,7 @@ def useItem():
         print(f"You used {item}")
         if item == "apple":
             player.heal(5)
-            print("You've healed 5 hp!")
+            print("You have healed for 5 hp!")
         bag.remove(item)
 
 def encounter(eHP):
@@ -49,17 +49,14 @@ def encounter(eHP):
         hInput = ""
         print(f"The enemy has {eHP} hp.")
 
-        time.sleep(3)
         enemyDamage = enemyAttack(eHP)
         player.takeDamage(enemyDamage)
-        print(f"The enemy does {enemyDamage} damage!")
+        print(f"The enemy has done {enemyDamage} damage")
 
-        time.sleep(2)
         heroHP = player.getHP()
         print(f"You have {heroHP} hp")
-    
-    if heroHP < 0:
-        print("You have fainted")
+
+
 
 player.setName(input("Hello adventurer! What is your name? ").strip())
 print(f"Hello {player.getName()}!")
@@ -139,3 +136,23 @@ print("You decide to get revenge on the goblins and get ready.")
 time.sleep(1)
 print(f"{player.getName()}, it sounds like a good idea to head for a village.")
 time.sleep(1)
+print("After a day of walking, you find a small village.")
+time.sleep(1)
+print("You decide to enter.") 
+time.sleep(1)
+print("You find that villagers from your town made it to here.")
+time.sleep(1)
+print("You ask about your parents.")
+time.sleep(1)
+print("You're told no one has seen them since the attack...")
+time.sleep(3)
+print("Your best friend Tamone steps up and says he'll help you by supplying gear.")
+time.sleep(2)
+print("Store unlocked! Tamone's Armory.")
+time.sleep(1)
+print("Tamone gives you two options for free.")
+heroInput = input("Copper Sword or Wooden Shield? ").lower().strip()
+if heroInput == "copper sword":
+    player.setBoost(2)
+if heroInput == "wooden shield":
+    player.setHP(30)
