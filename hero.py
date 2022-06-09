@@ -2,7 +2,7 @@ import random as r
 
 class Hero:
 
-    def __init__(self, name, chClass, spellSlots,  sneakAttacks, damage, spellDamage, sneakDamage, boost):
+    def __init__(self, name: str, chClass: str, spellSlots: int,  sneakAttacks: int, damage: int, spellDamage: int, sneakDamage: int, boost: int):
         self.name = name
         self.chClass = chClass
         self.hp = 25
@@ -86,12 +86,16 @@ class Hero:
         if attackInput == self.attackTypes[0]:
             enemyDamaged = r.randint(1, self.damage) + self.boost
             print(f"You used {self.attackTypes[0]}. It does {enemyDamaged} damage.")
-        elif attackInput == self.attackTypes[1]:
+        elif attackInput == self.attackTypes[1] and self.spellSlots > 0:
             enemyDamaged = r.randint(0, self.spellDamage)
             print(f"You used {self.attackTypes[1]}. It does {enemyDamaged} damage.")
-        elif attackInput == self.attackTypes[2]:
+            self.spellSlots = self.spellSlots - 1
+            print(f"You have {self.spellSlots} spells left")
+        elif attackInput == self.attackTypes[2] and self.sneakAttacks > 0:
             enemyDamaged = r.randint(0, self.sneakDamage)
             print(f"You used {self.attackTypes[2]}. It does {enemyDamaged} damage.")
+            self.sneakAttacks = self.sneakAttacks - 1
+            print(f"You have {self.sneakAttacks} sneak attacks left")
         return enemyDamaged
 
     def run(self):
@@ -100,12 +104,12 @@ class Hero:
     def getCoin(self):
         return self.coin
 
-    def earnCoin(self, x):
+    def earnCoin(self, x: int):
         self.coin + x
 
-    def buyItem(self, price, item):
+    def buyItem(self, price: int, item: str):
         self.bag.add(item)
         self.coin - price
     
-    def buyEquipment(self, price):
+    def buyEquipment(self, price: int):
         self.coin - price

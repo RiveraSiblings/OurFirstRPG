@@ -1,10 +1,12 @@
 import random as r
 import time
 from hero import  Hero
-from actions import print_ascii_art, encounter, useItem, moves
+from actions import *
 
 availableClasses = ["strategic", "courageous", "sneaky"] # known as a list or an array
 bag = []
+spells = 3
+sneakAttacks = 3
 
 def intro(player: Hero):
     player.setName(input("Hello adventurer! What is your name? ").strip())
@@ -20,14 +22,19 @@ def intro(player: Hero):
         player.setSpellSlots(5)
         player.setDamage(2)
         print("You have bonus to spells, but do less physical damage")
+        spells = 5
     elif player.getchClass() == "courageous":
         player.setDamage(5)
         player.setSneakAttacks(2)
         print("You have a bonus to damage, but have less sneak attacks")
+        sneakAttacks = 2
     else:
         player.setSneakAttacks(5)
         player.setSpellSlots(2)
         print("You have bonus to sneak attacks, but have less spell slots")
+        spells = 2
+        sneakAttacks = 5
+    
 
     time.sleep(3)
 
@@ -60,6 +67,8 @@ def starterquest(player: Hero):
     print("After defeating the rabbit, you find a rusty sword in the forest")
     time.sleep(1)
 
+    player.setSpellSlots(spells)
+    player.setSneakAttacks(sneakAttacks)
     print("Congrats! Enemy defeated. You have received a rusty blade (plus one to damage), 5 apples, a stick (to yeet at enemy)")
     player.setBoost(1)
     bag.append("stick")
@@ -108,3 +117,7 @@ def firstMonster(player: Hero):
     if heroInput == "wooden shield":
         player.setHP(30)
         print("Your hp is now 30!")
+
+#Nolan add the storyline here
+def secondQuest(player: Hero):
+    print("Nolan add content here")

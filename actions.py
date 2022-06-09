@@ -1,8 +1,9 @@
 import random as r
+from hero import Hero
 
 moves = ["attack", "run", "use item"]
 
-def enemyAttack(eHP):
+def enemyAttack(eHP: int):
     damage = r.randint(0, int(eHP/5))
     return damage 
 
@@ -10,7 +11,7 @@ def print_ascii_art(fn):
     f = open(fn, 'r')
     print( ''.join([line for line in f]))
 
-def useItem(bag, player):
+def useItem(bag: list, player: Hero):
     if len(bag) == 0:
         print("You have no items. :(")
     else:
@@ -21,7 +22,9 @@ def useItem(bag, player):
             print("You have healed for 5 hp!")
         bag.remove(item)
 
-def encounter(eHP, coinValue, player, bag):
+def encounter(eHP: int, coinValue: int, player: Hero, bag: list):
+    spells = player.getSpellSlots()
+    sneakAttacks = player.getSneakAttacks()
     hInput = ''
     heroHP = player.getHP()
     while eHP > 0 and heroHP > 0:
@@ -54,3 +57,5 @@ def encounter(eHP, coinValue, player, bag):
         player.earnCoin(coinValue)
     if heroHP == 0:
         print(f"Oh no! You've lost the battle.")
+    player.setSneakAttacks(sneakAttacks)
+    player.setSpellSlots(spells)
