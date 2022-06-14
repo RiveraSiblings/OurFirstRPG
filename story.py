@@ -22,18 +22,15 @@ def intro(player: Hero):
         player.setSpellSlots(5)
         player.setDamage(2)
         print("You have bonus to spells, but do less physical damage")
-        spells = 5
     elif player.getchClass() == "courageous":
         player.setDamage(5)
         player.setSneakAttacks(2)
         print("You have a bonus to damage, but have less sneak attacks")
-        sneakAttacks = 2
+
     else:
         player.setSneakAttacks(5)
         player.setSpellSlots(2)
         print("You have bonus to sneak attacks, but have less spell slots")
-        spells = 2
-        sneakAttacks = 5
     
 
     time.sleep(3)
