@@ -1,5 +1,6 @@
 import random as r
 import time
+from tkinter import E
 from hero import  Hero
 
 availableClasses = ["strategic", "courageous", "sneaky"] # known as a list or an array
@@ -154,5 +155,7 @@ print("Tamone gives you two options for free.")
 heroInput = input("Copper Sword or Wooden Shield? ").lower().strip()
 if heroInput == "copper sword":
     player.setBoost(2)
+    print("Tamone gives you a Copper Sword. This gives +2 Damage.")
 if heroInput == "wooden shield":
     player.setHP(30)
+    print("Tamone gives you a Wooden Shield. This gives you a +5 HP.")
