@@ -12,6 +12,9 @@ lose = False
 player = Hero("Gen", "Player", 3, 3, 3, 5, 6, 0)
 checkpoint = 0
 
+def rest():
+    print("Nolan I need you to add the action here")
+
 def enemyAttack(eHP):
     damage = r.randint(0, int(eHP/5))
     return damage 
@@ -170,9 +173,10 @@ def firstQuest():
                 player.setBoost(2)
                 print("Tamone gives you a Copper Sword. This gives +2 Damage.")
             if heroInput == "wooden shield":
-                player.setHP(30)
+                player.setHPTotal(30)
                 print("Tamone gives you a Wooden Shield. This gives you a +5 HP.")
             break
+    print("First Quest complete")
 
 
 def lose():
