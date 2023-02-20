@@ -13,8 +13,7 @@ player = Hero("Gen", "Player", 3, 3, 3, 5, 6, 0)
 checkpoint = 0
 
 def enemyAttack(eHP):
-    #damage = r.randint(0, int(eHP/5))
-    damage = 20
+    damage = r.randint(0, int(eHP/5))
     return damage 
 
 def print_ascii_art(fn):
@@ -36,6 +35,7 @@ def encounter(eHP):
     lost = False
     hInput = ''
     heroHP = player.getHP()
+    print(heroHP)
     while eHP > 0 and heroHP > 0:
         while (hInput in moves) == False:
             hInput = input(f"Choose an action: {moves} ")
@@ -177,6 +177,8 @@ def firstQuest():
 
 def lose():
     print("You died, loser.")
+    resetHP = player.getHPTotal()
+    player.setHP(resetHP)
 
 #Main Function
 if __name__ == "__main__":

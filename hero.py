@@ -6,6 +6,7 @@ class Hero:
         self.name = name
         self.chClass = chClass
         self.hp = 25
+        self.hpTotal = 25
         self.spellSlots = spellSlots
         self.sneakAttacks = sneakAttacks
         self.damage  = damage
@@ -24,6 +25,9 @@ class Hero:
 
     def getHP(self):
         return self.hp
+    
+    def getHPTotal(self):
+        return self.hpTotal
 
     def getSpellSlots(self):
         return self.spellSlots
@@ -73,6 +77,9 @@ class Hero:
 
     def setHP(self, s):
         self.hp = s
+
+    def setHPTotal(self, s):
+        self.hpTotal = s
 
     def takeDamage(self, damage):
         self.hp = self.hp - damage
